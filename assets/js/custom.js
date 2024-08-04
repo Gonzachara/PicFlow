@@ -34,11 +34,11 @@ $(".followbtn").click(function () {
             console.log(response);
             if (response.status) {
                 $(button).data('userId', 0);
-                $(button).html('<i class="bi bi-check-circle-fill"></i> Followed')
+                $(button).html('<i class="bi bi-check-circle-fill"></i> Seguir')
             } else {
                 $(button).attr('disabled', false);
 
-                alert('something is wrong,try again after some time');
+                alert('Algo está mal, intenta de nuevo después de un tiempo');
             }
         }
     });
@@ -61,11 +61,11 @@ $(".unfollowbtn").click(function () {
         success: function (response) {
             if (response.status) {
                 $(button).data('userId', 0);
-                $(button).html('<i class="bi bi-check-circle-fill"></i> Unfollowed')
+                $(button).html('<i class="bi bi-check-circle-fill"></i> Dejar de seguir')
             } else {
                 $(button).attr('disabled', false);
 
-                alert('something is wrong,try again after some time');
+                alert('Algo está mal, intenta de nuevo después de un tiempo');
             }
         }
     });
@@ -100,7 +100,7 @@ $(".like_btn").click(function () {
             } else {
                 $(button).attr('disabled', false);
 
-                alert('something is wrong,try again after some time');
+                alert('Algo está mal, intenta de nuevo después de un tiempo');
 
             }
 
@@ -133,7 +133,7 @@ $(".unlike_btn").click(function () {
             } else {
                 $(button).attr('disabled', false);
 
-                alert('something is wrong,try again after some time');
+                alert('Algo está mal, intenta de nuevo después de un tiempo');
 
 
             }
@@ -184,7 +184,7 @@ $(".add-comment").click(function () {
                 $(button).attr('disabled', false);
                 $(button).siblings('.comment-input').attr('disabled', false);
 
-                alert('something is wrong,try again after some time');
+                alert('Algo está mal, intenta de nuevo después de un tiempo');
 
 
             }
@@ -225,7 +225,7 @@ $("#search").keyup(function () {
             } else {
 
 
-                $("#sra").html('<p class="text-center text-muted">no user found !</p>');
+                $("#sra").html('<p class="text-center text-muted">¡No se encontraron usuarios!</p>');
 
 
 
@@ -283,7 +283,7 @@ $(".unblockbtn").click(function () {
             } else {
                 $(button).attr('disabled', false);
 
-                alert('something is wrong,try again after some time');
+                alert('Algo está mal, intenta de nuevo después de un tiempo');
             }
         }
     });
@@ -325,7 +325,7 @@ $("#sendmsg").click(function () {
                 $("#msginput").attr("disabled", false);
                 $("#msginput").val('');
             } else {
-                alert('someting went wrong, try again after some time');
+                alert('Algo está mal, intenta de nuevo después de un tiempo');
             }
 
 

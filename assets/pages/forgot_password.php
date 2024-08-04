@@ -15,18 +15,18 @@ if(isset($_SESSION['forgot_code']) && !isset($_SESSION['auth_temp'])){
 
 
                 </div>
-                <h1 class="h5 mb-3 fw-normal">Forgot Your Password ?</h1>
+                <h1 class="h5 mb-3 fw-normal">¿Olvidaste tu contraseña?</h1>
 <?php
-if($action=='forgotpassword'){
+if($action=='forgotpassword'){  
     ?>
   <div class="form-floating">
                     <input type="email" name="email" class="form-control rounded-0" placeholder="username/email">
-                    <label for="floatingInput">enter your email</label>
+                    <label for="floatingInput">Ingresa tu correo</label>
                 </div>
                 <?=showError('email')?>
 
 <br>
-                <button class="btn btn-primary" type="submit">Send Verification Code</button>
+                <button class="btn btn-primary" type="submit">Enviar código de verificación</button>
 
     <?php
 }
@@ -45,7 +45,7 @@ if($action=='verifycode'){
                 <?=showError('email_verify')?>
 
                 <br>
-                <button class="btn btn-primary" type="submit">Verify Code</button>
+                <button class="btn btn-primary" type="submit">Verificar código</button>
 
     <?php
 }
@@ -58,12 +58,12 @@ if($action=='changepassword'){
 <p>Enter your new password  - <?=$_SESSION['forgot_email']?></p>
 <div class="form-floating mt-1">
                     <input type="password" name="password" class="form-control rounded-0" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">new password</label>
+                    <label for="floatingPassword">Nueva contraseña</label>
                 </div> 
                 <?=showError('password')?>
 
                 <br>
-                <button class="btn btn-primary" type="submit">Change Password</button>
+                <button class="btn btn-primary" type="submit">Cambiar contraseña</button>
 
 
     <?php
@@ -75,9 +75,8 @@ if($action=='changepassword'){
                 <br>
                 <br>
 
-                <a href="?login" class="text-decoration-none mt-5"><i class="bi bi-arrow-left-circle-fill"></i> Go Back
-                    To
-                    Login</a>
+                <a href="?login" class="text-decoration-none mt-5"><i class="bi bi-arrow-left-circle-fill"></i> Volver a
+                    Iniciar sesión</a>
             </form>
         </div>
     </div>

@@ -1,27 +1,9 @@
-/**
- * Timeago is a jQuery plugin that makes it easy to support automatically
- * updating fuzzy timestamps (e.g. "4 minutes ago" or "about 1 day ago").
- *
- * @name timeago
- * @version 1.6.7
- * @requires jQuery >=1.5.0 <4.0
- * @author Ryan McGeary
- * @license MIT License - http://www.opensource.org/licenses/mit-license.php
- *
- * For usage and examples, visit:
- * http://timeago.yarp.com/
- *
- * Copyright (c) 2008-2019, Ryan McGeary (ryan -[at]- mcgeary [*dot*] org)
- */
-
 (function (factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
     define(['jquery'], factory);
   } else if (typeof module === 'object' && typeof module.exports === 'object') {
     factory(require('jquery'));
   } else {
-    // Browser globals
     factory(jQuery);
   }
 }(function ($) {
@@ -49,27 +31,27 @@
       strings: {
         prefixAgo: null,
         prefixFromNow: null,
-        suffixAgo: "ago",
-        suffixFromNow: "from now",
-        inPast: "any moment now",
-        seconds: "less than a minute",
-        minute: "about a minute",
-        minutes: "%d minutes",
-        hour: "about an hour",
-        hours: "about %d hours",
-        day: "a day",
-        days: "%d days",
-        month: "about a month",
-        months: "%d months",
-        year: "about a year",
-        years: "%d years",
+        suffixAgo: "hace",
+        suffixFromNow: "justo ahora",
+        inPast: "en cualquier momento ahora",
+        seconds: "menos de un minuto",
+        minute: "un minuto",
+        minutes: "%d minutos",
+        hour: "una hora",
+        hours: "%d horas",
+        day: "un día",
+        days: "%d días",
+        month: "un mes",
+        months: "%d meses",
+        year: "un año",
+        years: "%d años",
         wordSeparator: " ",
         numbers: []
       }
     },
 
     inWords: function(distanceMillis) {
-      if (!this.settings.allowPast && ! this.settings.allowFuture) {
+      if (!this.settings.allowPast && !this.settings.allowFuture) {
           throw 'timeago allowPast and allowFuture settings can not both be set to false.';
       }
 
@@ -113,14 +95,11 @@
 
       var separator = $l.wordSeparator || "";
       if ($l.wordSeparator === undefined) { separator = " "; }
-      return $.trim([prefix, words, suffix].join(separator));
+      return $.trim([suffix, words].join(separator)); // Cambiado el orden aquí
     },
 
     parse: function(iso8601) {
       var s = $.trim(iso8601);
-      s = s.replace(/\.\d+/,""); // remove milliseconds
-      s = s.replace(/-/,"/").replace(/-/,"/");
-      s = s.replace(/T/," ").replace(/Z/," UTC");
       s = s.replace(/([\+\-]\d\d)\:?(\d\d)/," $1$2"); // -04:00 -> -0400
       s = s.replace(/([\+\-]\d\d)$/," $100"); // +09 -> +0900
       return new Date(s);
@@ -130,14 +109,11 @@
       return $t.parse(iso8601);
     },
     isTime: function(elem) {
-      // jQuery's `is()` doesn't play well with HTML5 in IE
       return $(elem).get(0).tagName.toLowerCase() === "time"; // $(elem).is("time");
     }
   });
 
   // functions that can be called via $(el).timeago('action')
-  // init is default when no action is given
-  // functions are called with context of a single element
   var functions = {
     init: function() {
       functions.dispose.call(this);
@@ -173,7 +149,6 @@
     if (!fn) {
       throw new Error("Unknown function name '"+ action +"' for timeago");
     }
-    // each over objects here and call the requested function
     this.each(function() {
       fn.call(this, options);
     });
@@ -183,9 +158,7 @@
   function refresh() {
     var $s = $t.settings;
 
-    //check if it's still visible
     if ($s.autoDispose && !$.contains(document.documentElement,this)) {
-      //stop if it has been removed
       $(this).timeago("dispose");
       return this;
     }
@@ -226,7 +199,6 @@
     return (new Date().getTime() - date.getTime());
   }
 
-  // fix for IE6 suckage
   document.createElement("abbr");
   document.createElement("time");
 }));

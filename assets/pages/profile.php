@@ -20,8 +20,8 @@ if($user['id']!=$profile['id'] && !checkBS($profile['id'])){
                             <span class="" style="font-size:xx-large" type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots"></i> </span>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#chatbox" onclick="popchat(<?=$profile['id']?>)"><i class="bi bi-chat-fill"></i> Message</a></li>
-                                <li><a class="dropdown-item " href="assets/php/actions.php?block=<?=$profile['id']?>&username=<?=$profile['username']?>"><i class="bi bi-x-circle-fill"></i> Block</a></li>
+                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#chatbox" onclick="popchat(<?=$profile['id']?>)"><i class="bi bi-chat-fill"></i> Enviar mensaje</a></li>
+                                <li><a class="dropdown-item " href="assets/php/actions.php?block=<?=$profile['id']?>&username=<?=$profile['username']?>"><i class="bi bi-x-circle-fill"></i> Bloquear</a></li>
                             </ul>
                         </div>
     <?php
@@ -37,9 +37,21 @@ if(!checkBS($profile['id'])){
     ?>
  <div class="d-flex gap-2 align-items-center my-3">
 
-<a class="btn btn-sm btn-primary"><i class="bi bi-file-post-fill"></i> <?=count($profile_post)?> Posts</a>
-<a class="btn btn-sm btn-primary <?=count($profile['followers'])<1?'disabled':''?>" data-bs-toggle="modal" data-bs-target="#follower_list"><i class="bi bi-people-fill"></i> <?=count($profile['followers'])?> Followers</a>
-<a class="btn btn-sm btn-primary <?=count($profile['following'])<1?'disabled':''?>" data-bs-toggle="modal" data-bs-target="#following_list"><i class="bi bi-person-fill"></i> <?=count($profile['following'])?> Following</a>
+<a class="btn btn-sm btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 48 48">
+	<rect width="48" height="48" fill="none" />
+	<g fill="none" stroke="white" stroke-width="4">
+		<path d="M39.3 6H8.7A2.7 2.7 0 0 0 6 8.7v30.6A2.7 2.7 0 0 0 8.7 42h30.6a2.7 2.7 0 0 0 2.7-2.7V8.7A2.7 2.7 0 0 0 39.3 6Z" />
+		<path stroke-linecap="round" d="M24 6v36M6 24h36" />
+	</g>
+</svg> <?=count($profile_post)?> Posteos</a>
+<a class="btn btn-sm btn-primary <?=count($profile['followers'])<1?'disabled':''?>" data-bs-toggle="modal" data-bs-target="#follower_list"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+	<rect width="24" height="24" fill="none" />
+	<path fill="white" d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3s1.34 3 3 3m-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5S5 6.34 5 8s1.34 3 3 3m0 2c-2.33 0-7 1.17-7 3.5V18c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-1.5c0-2.33-4.67-3.5-7-3.5m8 0c-.29 0-.62.02-.97.05c.02.01.03.03.04.04c1.14.83 1.93 1.94 1.93 3.41V18c0 .35-.07.69-.18 1H22c.55 0 1-.45 1-1v-1.5c0-2.33-4.67-3.5-7-3.5" />
+</svg> <?=count($profile['followers'])?> Seguidores</a>
+<a class="btn btn-sm btn-primary <?=count($profile['following'])<1?'disabled':''?>" data-bs-toggle="modal" data-bs-target="#following_list"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+	<rect width="24" height="24" fill="none" />
+	<path fill="white" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4m0 2c-2.67 0-8 1.34-8 4v1c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-1c0-2.66-5.33-4-8-4" />
+</svg> <?=count($profile['following'])?> Siguiendo</a>
 
 
 </div>
@@ -57,21 +69,21 @@ if($user['id']!=$profile['id']){
 <?php
 if(checkBlockStatus($user['id'],$profile['id'])){
 ?> 
-<button class="btn btn-sm btn-danger unblockbtn" data-user-id='<?=$profile['id']?>' >Unblock</button>
+<button class="btn btn-sm btn-danger unblockbtn" data-user-id='<?=$profile['id']?>' >Desbloquear</button>
 
 <?php
 }else if(checkBlockStatus($profile['id'],$user['id'])){ ?>
     <div class="alert alert-danger" role="alert">
-    <i class="bi bi-x-octagon-fill"></i> @<?=$profile['username']?> blocked you !
+    <i class="bi bi-x-octagon-fill"></i> @<?=$profile['username']?> ¡Te bloqueó!
 </div>
    <?php }else if(checkFollowStatus($profile['id'])){
    ?>
-<button class="btn btn-sm btn-danger unfollowbtn" data-user-id='<?=$profile['id']?>' >Unfollow</button>
+<button class="btn btn-sm btn-danger unfollowbtn" data-user-id='<?=$profile['id']?>' >Dejar de seguir</button>
    
    <?php
 }else{
     ?>
-<button class="btn btn-sm btn-primary followbtn" data-user-id='<?=$profile['id']?>' >Follow</button>
+<button class="btn btn-sm btn-primary followbtn" data-user-id='<?=$profile['id']?>' >Seguir</button>
 
     <?php
 }
@@ -89,7 +101,7 @@ if(checkBlockStatus($user['id'],$profile['id'])){
 
 
         </div>
-        <h3 class="border-bottom">Posts</h3>
+        <h3 class="border-bottom">Posteos</h3>
         <?php
 
 if(checkBS($profile['id'])){
@@ -97,12 +109,12 @@ if(checkBS($profile['id'])){
 
    ?>
  <div class="alert alert-secondary text-center" role="alert">
-    <i class="bi bi-x-octagon-fill"></i> You are not allowed to see posts !
+    <i class="bi bi-x-octagon-fill"></i> ¡No podés ver los posteos de este usuario!
 </div>
    <?php
     
 }else if(count($profile_post)<1){
-    echo "<p class='p-2 bg-white border rounded text-center my-3'>You don't have any post</p>";
+    echo "<p class='p-2 bg-white border rounded text-center my-3'>Este usuario no tiene posteos</p>";
 }
         ?>
         <div class="gallery d-flex flex-wrap gap-2 mb-4">
@@ -139,7 +151,7 @@ foreach($profile_post as $post){
                 <div class="" ></div>
                 <div class="dropdown">
   <span class="<?=count($likes)<1?'disabled':''?>" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-  <?=count($likes)?> likes
+  <?=count($likes)?> Likes
 </span>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
   <?php
@@ -154,7 +166,7 @@ foreach($profile_post as $post){
     
   </ul>
 </div>
-                <div style="font-size:small" class="text-muted">Posted <?=show_time($post['created_at'])?> </div> 
+                <div style="font-size:small" class="text-muted">Posteado <?=show_time($post['created_at'])?> </div> 
                  
 </div>
                         </div>
@@ -167,7 +179,7 @@ foreach($profile_post as $post){
 $comments = getComments($post['id']);
 if(count($comments)<1){
     ?>
-<p class="p-3 text-center my-2 nce">no comments</p>
+<p class="p-3 text-center my-2 nce">No hay comentarios</p>
     <?php
 }
 foreach($comments as $comment){
@@ -197,16 +209,16 @@ foreach($comments as $comment){
                         if(checkFollowStatus($profile['id']) || $profile['id']==$user['id']){
                             ?>
   <div class="input-group p-2 border-top">
-                            <input type="text" class="form-control rounded-0 border-0 comment-input" placeholder="say something.."
+                            <input type="text" class="form-control rounded-0 border-0 comment-input" placeholder="Escribe algo.."
                                 aria-label="Recipient's username" aria-describedby="button-addon2">
                             <button class="btn btn-outline-primary rounded-0 border-0 add-comment" data-cs="comment-section<?=$post['id']?>" data-post-id="<?=$post['id']?>" type="button"
-                                id="button-addon2">Post</button>
+                                id="button-addon2">Postear</button>
                         </div>
                             <?php
                         }else{
                             ?>
 <div class="text-center p-2">
-if you want to comment follow this user</div>
+Si querés comentar, seguí a este usuario</div>
                         
                             <?php
                         }
@@ -244,7 +256,7 @@ if you want to comment follow this user</div>
   <div class="modal-dialog modal-dialog-centered">
   <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Followers</h5>
+                <h5 class="modal-title">Seguidores</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -253,11 +265,11 @@ foreach($profile['followers'] as $f){
     $fuser = getUser($f['follower_id']);
     $fbtn='';
     if(checkFollowStatus($f['follower_id'])){
-        $fbtn = '<button class="btn btn-sm btn-danger unfollowbtn" data-user-id='.$fuser['id'].' >Unfollow</button>';
+        $fbtn = '<button class="btn btn-sm btn-danger unfollowbtn" data-user-id='.$fuser['id'].' >Dejar de seguir</button>';
     }else if($user['id']==$f['follower_id']){
         $fbtn='';
     }else{
-        $fbtn = '<button class="btn btn-sm btn-primary followbtn" data-user-id='.$fuser['id'].' >Follow</button>';
+        $fbtn = '<button class="btn btn-sm btn-primary followbtn" data-user-id='.$fuser['id'].' >Seguir</button>';
 
     }
     ?>
@@ -292,7 +304,7 @@ foreach($profile['followers'] as $f){
   <div class="modal-dialog modal-dialog-centered">
   <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Following</h5>
+                <h5 class="modal-title">Siguiendo</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -301,11 +313,11 @@ foreach($profile['following'] as $f){
     $fuser = getUser($f['user_id']);
     $fbtn='';
     if(checkFollowStatus($f['user_id'])){
-        $fbtn = '<button class="btn btn-sm btn-danger unfollowbtn" data-user-id='.$fuser['id'].' >Unfollow</button>';
+        $fbtn = '<button class="btn btn-sm btn-danger unfollowbtn" data-user-id='.$fuser['id'].' >Dejar de seguir</button>';
     }else if($user['id']==$f['user_id']){
         $fbtn='';
     }else{
-        $fbtn = '<button class="btn btn-sm btn-primary followbtn" data-user-id='.$fuser['id'].' >Follow</button>';
+        $fbtn = '<button class="btn btn-sm btn-primary followbtn" data-user-id='.$fuser['id'].' >Seguir</button>';
 
     }
     ?>
@@ -320,7 +332,7 @@ foreach($profile['following'] as $f){
                         </div>
                     </div>
                     <div class="d-flex align-items-center">
-                      <?=$fbtn?>
+                        <?=$fbtn?>
 
                     </div>
                 </div>

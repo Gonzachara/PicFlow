@@ -13,7 +13,7 @@ if(isset($_GET['block'])){
       if(blockUser($user_id)){
           header("location:../../?u=$user");
       }else{
-          echo "something went wrong";
+          echo "Algo salió mal";
       }
   
     
@@ -24,7 +24,7 @@ if(isset($_GET['block'])){
       if(deletePost($post_id)){
           header("location:{$_SERVER['HTTP_REFERER']}");
       }else{
-          echo "something went wrong";
+          echo "Algo salió mal";
       }
   
     
@@ -39,7 +39,7 @@ if($response['status']){
     if(createUser($_POST)){
     header('location:../../?login&newuser');
     }else{
-        echo "<script>alert('somethihng is wrong')</script>";
+        echo "<script>alert('Algo salió mal')</script>";
     }
    
 
@@ -65,7 +65,7 @@ if(isset($_GET['login'])){
 
      if($response['user']['ac_status']==0){
      $_SESSION['code']=$code = rand(111111,999999);
-     sendCode($response['user']['email'],'Verify Your Email',$code);
+     sendCode($response['user']['email'],'Verificar tu correo electrónico',$code);
      }
 
      header("location:../../");
@@ -82,7 +82,7 @@ if(isset($_GET['login'])){
     if(isset($_GET['resend_code'])){
        
             $_SESSION['code']=$code = rand(111111,999999);
-            sendCode($_SESSION['userdata']['email'],'Verify Your Email',$code);
+            sendCode($_SESSION['userdata']['email'],'Verificar tu correo electrónico',$code);
             header('location:../../?resended');
     }
 
@@ -93,13 +93,13 @@ if(isset($_GET['login'])){
        if(verifyEmail($_SESSION['userdata']['email'])){
         header('location:../../');
        }else{
-           echo "something is wrong";
+           echo "Algo salió mal";
        }
 
        }else{
-           $response['msg']='incorrect verifictaion code !';
+           $response['msg']='¡Código de verificación incorrecto!';
            if(!$_POST['code']){
-            $response['msg']='enter 6 digit code !';
+            $response['msg']='Introducí el código de 6 dígitos!';
 
            }
            $response['field']='email_verify';
@@ -113,13 +113,13 @@ if(isset($_GET['login'])){
 
 if(isset($_GET['forgotpassword'])){
     if(!$_POST['email']){
-        $response['msg']="enter your email id !";
+        $response['msg']="Ingresá tu correo electrónico";
         $response['field']='email';
         $_SESSION['error']=$response;
         header('location:../../?forgotpassword');
 
     }elseif(!isEmailRegistered($_POST['email'])){
-        $response['msg']="email id is not registered";
+        $response['msg']="Correo electrónico no registrado";
         $response['field']='email';
         $_SESSION['error']=$response;
         header('location:../../?forgotpassword');
@@ -127,7 +127,7 @@ if(isset($_GET['forgotpassword'])){
     }else{
           $_SESSION['forgot_email']=$_POST['email'];
            $_SESSION['forgot_code']=$code = rand(111111,999999);
-            sendCode($_POST['email'],'Forgot Your Password ?',$code);
+            sendCode($_POST['email'],'Olvidaste tu contraseña ?',$code);
             header('location:../../?forgotpassword&resended');
     }
 
@@ -152,9 +152,9 @@ if(isset($_GET['verifycode'])){
     $_SESSION['auth_temp']=true;
      header('location:../../?forgotpassword');
     }else{
-        $response['msg']='incorrect verifictaion code !';
+        $response['msg']='¡Código de verificación incorrecto!';
         if(!$_POST['code']){
-         $response['msg']='enter 6 digit code !';
+         $response['msg']='Introducí el código de 6 dígitos!';
 
         }
         $response['field']='email_verify';
@@ -167,7 +167,7 @@ if(isset($_GET['verifycode'])){
 
 if(isset($_GET['changepassword'])){
     if(!$_POST['password']){
-        $response['msg']="enter your new password";
+        $response['msg']="Ingresá tu nueva contraseña";
         $response['field']='password';
         $_SESSION['error']=$response;
         header('location:../../?forgotpassword');
@@ -191,7 +191,7 @@ if(isset($_GET['updateprofile'])){
             header("location:../../?editprofile&success");
 
         }else{
-            echo "something is wrong";
+            echo "Algo salió mal";
         }
        
     
@@ -210,7 +210,7 @@ if(isset($_GET['addpost'])){
 if(createPost($_POST,$_FILES['post_img'])){
     header("location:../../?new_post_added");
 }else{
-    echo "something went wrong";
+    echo "Algo salió mal";
 }
    }else{
     $_SESSION['error']=$response;

@@ -8,10 +8,10 @@ global $user;
 
 
                 </div>
-                <h1 class="h5 mb-3 fw-normal">Verify Your Email Id (<?=$user['email']?>)</h1>
+                <h1 class="h5 mb-3 fw-normal">Verificar tu correo electrónico (<?=$user['email']?>)</h1>
 
 
-                <p>Enter 6 Digit Code Sended to You</p>
+                <p>Ingresá el código de 6 dígitos que te enviamos a <?=$user['email']?></p>
                 <div class="form-floating mt-1">
 
                     <input type="text" name="code" class="form-control rounded-0" id="floatingPassword" placeholder="Password">
@@ -20,7 +20,7 @@ global $user;
                 <?php
 if(isset($_GET['resended'])){
     ?>
-<p class="text-success">Verification code resended !</p>
+<p class="text-success">¡Código de verificación reenviado!</p>
 
 <?php
 }
@@ -28,8 +28,8 @@ if(isset($_GET['resended'])){
                 <?=showError('email_verify')?>
 
                 <div class="mt-3 d-flex justify-content-between align-items-center">
-                    <button class="btn btn-primary" type="submit">Verify Email</button>
-                    <a href="assets/php/actions.php?resend_code" class="text-decoration-none" type="submit">Resend Code</a>
+                    <button class="btn btn-primary" type="submit">Verificar correo</button>
+                    <a href="assets/php/actions.php?resend_code" class="text-decoration-none" type="submit">Reenviar código</a>
 
 
 
@@ -38,7 +38,7 @@ if(isset($_GET['resended'])){
                 </div>
                 <br>
                 <a href="assets/php/actions.php?logout" class="text-decoration-none mt-5"><i class="bi bi-arrow-left-circle-fill"></i>
-                    Logout</a>
+                    Cerrar sesión</a>
             </form>
         </div>
     </div>
