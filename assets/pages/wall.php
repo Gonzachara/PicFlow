@@ -12,7 +12,7 @@
             
                 showError('post_img');
                 if(count($posts)<1){
-                    echo "<p style='width:93vw' class='p-2 bg-white border rounded text-center my-3 col-12'>Seguí a alguien o publicá algo</p>";
+                    echo "<p style='max-width: 40vw; margin: 20px auto; padding: 15px; background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; text-align: center; font-size: 1.2em; color: #495057;'>Seguí a alguien o publicá algo</p>";
                 }
     foreach($posts as $post){
         $likes = getLikes($post['id']);
@@ -80,7 +80,10 @@
                             <input type="text" class="form-control rounded-0 border-0 comment-input" placeholder="Escribe algo.."
                                     aria-label="Recipient's username" aria-describedby="button-addon2">
                                 <button class="btn btn-outline-primary rounded-0 border-0 add-comment" data-page='wall' data-cs="comment-section<?=$post['id']?>" data-post-id="<?=$post['id']?>" type="button"
-                                    id="button-addon2">Postear</button>
+                                    id="button-addon2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 14 14">
+                                    <rect width="14" height="14" fill="none" />
+                                    <path fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" d="m5.812 11l2.178 2.168a1.1 1.1 0 0 0 1.05.3a1.119 1.119 0 0 0 .809-.74l3.576-10.72A1.118 1.118 0 0 0 11.987.57L1.267 4.147a1.119 1.119 0 0 0-.74.859a1.099 1.099 0 0 0 .3 1l2.737 2.737l-.09 3.466zM13.106.79L3.564 8.742" />
+                                </svg></button>
                     </div>
 
                 </div>
@@ -163,8 +166,11 @@
                             <div class="input-group p-2 border-top">
                                 <input type="text" class="form-control rounded-0 border-0 comment-input" placeholder="Escribe algo.."
                                     aria-label="Recipient's username" aria-describedby="button-addon2">
-                                <button class="btn btn-outline-primary rounded-0 border-0 add-comment" data-cs="comment-section<?=$post['id']?>" data-post-id="<?=$post['id']?>" type="button"
-                                    id="button-addon2">Postear</button>
+                                    <button class="btn btn-outline-primary rounded-0 border-0 add-comment" data-page='wall' data-cs="comment-section<?=$post['id']?>" data-post-id="<?=$post['id']?>" type="button"
+                                    id="button-addon2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 14 14">
+                                    <rect width="14" height="14" fill="none" />
+                                    <path fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" d="m5.812 11l2.178 2.168a1.1 1.1 0 0 0 1.05.3a1.119 1.119 0 0 0 .809-.74l3.576-10.72A1.118 1.118 0 0 0 11.987.57L1.267 4.147a1.119 1.119 0 0 0-.74.859a1.099 1.099 0 0 0 .3 1l2.737 2.737l-.09 3.466zM13.106.79L3.564 8.742" />
+                                </svg></button>
                             </div>
                         </div>
 

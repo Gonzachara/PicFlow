@@ -83,7 +83,7 @@
         $current_user=$_SESSION['userdata']['id'];
         $query="INSERT INTO follow_list(follower_id,user_id) VALUES($current_user,$user_id)";
     
-        createNotification($cu['id'],$user_id,"comenzó a seguirte !");
+        createNotification($cu['id'],$user_id,"comenzó a seguirte!");
         return mysqli_query($db,$query);
         
     }
@@ -242,7 +242,7 @@
         $current_user=$_SESSION['userdata']['id'];
         $query="DELETE FROM follow_list WHERE follower_id=$current_user && user_id=$user_id";
 
-        createNotification($current_user,$user_id,"Unfollowed you !");
+        createNotification($current_user,$user_id,"dejó de seguirte!");
         return mysqli_query($db,$query);
     
         

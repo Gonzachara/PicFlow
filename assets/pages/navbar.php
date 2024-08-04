@@ -4,20 +4,16 @@
                 <div class="d-flex justify-content-between col-lg-8 col-sm-12">
                     <a class="navbar-brand" href="?">
                         <img src="assets/images/pictogram.png" height="28">
-
                     </a>
 
-                    <form class="d-flex" id="searchform">
-                        <input class="form-control me-2" type="search" id="search" placeholder="Buscar.." aria-label="Buscar" autocomplete="off">
-                        <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i></button>
-                        <div class="bg-white text-end rounded border shadow py-3 px-4 mt-5" style="display:none;position:absolute;z-index:+99;" id="search_result" data-bs-auto-close="true">
-                        <button type="button" class="btn-close" aria-label="Close" id="close_search"></button>
-                        <div id="sra" class="text-start">
-                        <p class="text-center text-muted">Buscar por nombre o usuario</p>
-                        </div>
-                        </div>
-                    </form>
-
+                    <button class="btn" data-bs-toggle="offcanvas" data-bs-target="#searchSidebar" aria-controls="searchSidebar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <rect width="24" height="24" fill="none" />
+                            <g fill="none" fill-rule="evenodd">
+                                <path fill="black" d="M10.5 4a6.5 6.5 0 1 0 0 13a6.5 6.5 0 0 0 0-13M2 10.5a8.5 8.5 0 1 1 15.176 5.262l3.652 3.652a1 1 0 0 1-1.414 1.414l-3.652-3.652A8.5 8.5 0 0 1 2 10.5M9.5 7a1 1 0 0 1 1-1a4.5 4.5 0 0 1 4.5 4.5a1 1 0 1 1-2 0A2.5 2.5 0 0 0 10.5 8a1 1 0 0 1-1-1" />
+                            </g>
+                        </svg>
+                    </button>
                 </div>
 
                 <style>
@@ -32,7 +28,6 @@
                 </style>
 
                 <ul class="navbar-nav flex-fill flex-row justify-content-evenly mb-lg-1 mb-sm-0">
-
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="?"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16">
                             <rect width="16" height="16" fill="none" />
@@ -113,9 +108,33 @@
                         </svg> Cerrar sesión</a></li>
                         </ul>
                     </li>
-
                 </ul>
-
-
             </div>
         </nav>
+
+<!-- Sidebar para búsqueda -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="searchSidebar" aria-labelledby="searchSidebarLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="searchSidebarLabel">Búsqueda</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form class="d-flex" id="searchform">
+            <input class="form-control me-2" type="search" id="search" placeholder="Buscar usuarios..." aria-label="Buscar" autocomplete="off">
+            <button class="btn" type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <rect width="24" height="24" fill="none" />
+                    <g fill="none" fill-rule="evenodd">
+                        <path d="M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
+                        <path fill="black" d="M10.5 4a6.5 6.5 0 1 0 0 13a6.5 6.5 0 0 0 0-13M2 10.5a8.5 8.5 0 1 1 15.176 5.262l3.652 3.652a1 1 0 0 1-1.414 1.414l-3.652-3.652A8.5 8.5 0 0 1 2 10.5M9.5 7a1 1 0 0 1 1-1a4.5 4.5 0 0 1 4.5 4.5a1 1 0 1 1-2 0A2.5 2.5 0 0 0 10.5 8a1 1 0 0 1-1-1" />
+                    </g>
+                </svg>
+            </button>
+        </form>
+        <div class="bg-white text-end py-3 px-4 mt-3" style="display:none;position:relative;z-index:+99;" id="search_result" data-bs-auto-close="true">
+            <div id="sra" class="text-start">
+                <p class="text-center text-muted">Buscar por nombre o usuario</p>
+            </div>
+        </div>
+    </div>
+</div>

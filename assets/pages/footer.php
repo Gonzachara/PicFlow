@@ -106,25 +106,24 @@
     </div>
   </div>
 
-  <br><br><br><br><br>
+  <div style="height: 250px;"></div>
 
-
-  <!-- Redes Sociales -->
-  <footer class="footer bg-dark text-white py-4">
+  <!-- Footer -->
+  <footer class="footer bg-dark text-white py-4 fixed-bottom">
     <div class="container text-center">
-      <div class="d-flex justify-content-center mb-3">
-        <a href="#" class="text-white me-3"><i class="bi bi-facebook fs-3"></i></a>
-        <a href="#" class="text-white me-3"><i class="bi bi-twitter fs-3"></i></a>
-        <a href="#" class="text-white me-3"><i class="bi bi-instagram fs-3"></i></a>
-      </div>
-      <p class="mb-0">&copy; <?= date('Y') ?> Pictogram - Todos los derechos reservados.</p>
-      <p class="mb-0">Desarrollado por <a href="https://instagram.com/gonzaachara" target="_blank" class="text-white">Gonzalo Chiaradia</a></p>
+        <div class="d-flex justify-content-center mb-3">
+            <a href="#" class="text-white me-3"><i class="bi bi-facebook fs-3"></i></a>
+            <a href="#" class="text-white me-3"><i class="bi bi-twitter fs-3"></i></a>
+            <a href="#" class="text-white me-3"><i class="bi bi-instagram fs-3"></i></a>
+        </div>
+        <p class="mb-0">&copy; <?= date('Y') ?> Pictogram - Todos los derechos reservados.</p>
+        <p class="mb-0">Desarrollado por <a href="https://instagram.com/gonzaachara" target="_blank" class="text-white">Gonzalo Chiaradia</a></p>
     </div>
-  </footer>
+</footer>
 
-  <!-- Scripts -->
-  <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/jquery-3.6.0.min.js"></script>
-  <script src="assets/js/jquery.timeago.js"></script>
-  <script src="assets/js/custom.js?v=<?=time()?>"></script>
+<!-- Scripts -->
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/jquery-3.6.0.min.js"></script>
+<script src="assets/js/jquery.timeago.js"></script>
+<script src="assets/js/custom.js?v=<?=time()?>"></script>
 <?php endif; ?>

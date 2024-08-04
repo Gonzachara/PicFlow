@@ -225,7 +225,7 @@ $("#search").keyup(function () {
             } else {
 
 
-                $("#sra").html('<p class="text-center text-muted">¡No se encontraron usuarios!</p>');
+                $("#sra").html('<p class="text-center text-muted">No se encontraron usuarios</p>');
 
 
 

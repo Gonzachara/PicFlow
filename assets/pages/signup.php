@@ -6,14 +6,14 @@
 
                     <img class="mb-4" src="assets/images/pictogram.png" alt="" height="45">
                 </div>
-                <h1 class="h5 mb-3 fw-normal">Crear nueva cuenta</h1>
+                <h1 class="h4 fw-normal text-center">Crear nueva cuenta</h1>
                 <div class="d-flex">
-                    <div class="form-floating mt-1 col-6 ">
-                        <input type="text" name="first_name" value="<?=showFormData('first_name')?>" class="form-control rounded-0" placeholder="Nombre">
+                <div class="form-floating mt-3 col-6 "> 
+                        <input type="text" name="first_name" value="<?=showFormData('first_name')?>" class="form-control rounded-0" placeholder="Nombre" style="border-radius: 12px !important;">
                         <label for="floatingInput">Nombre</label>
                     </div>
-                    <div class="form-floating mt-1 col-6">
-                        <input type="text" name="last_name" value="<?=showFormData('last_name')?>" class="form-control rounded-0" placeholder="Apellido">
+                    <div class="form-floating mt-3 col-6" style="margin-left: 5px;"> 
+                        <input type="text" name="last_name" value="<?=showFormData('last_name')?>" class="form-control rounded-0" placeholder="Apellido" style="border-radius: 12px !important;">
                         <label for="floatingInput">Apellido</label>
                     </div>
                 </div>
@@ -43,20 +43,20 @@
                         </label>
                     </div>
                 </div>
-                <div class="form-floating mt-1">
-                    <input type="email" name="email" value="<?=showFormData('email')?>" class="form-control rounded-0" placeholder="Correo electrónico">
+                <div class="form-floating mt-3">
+                    <input type="email" name="email" value="<?=showFormData('email')?>" class="form-control rounded-0" placeholder="Correo electrónico" style="border-radius: 12px !important;">
                     <label for="floatingInput">Correo electrónico</label>
                 </div>
                 <?=showError('email')?>
 
-                <div class="form-floating mt-1">
-                    <input type="text" name="username" value="<?=showFormData('username')?>" class="form-control rounded-0" placeholder="Nombre de usuario">
+                <div class="form-floating mt-3">
+                    <input type="text" name="username" value="<?=showFormData('username')?>" class="form-control rounded-0" placeholder="Nombre de usuario" style="border-radius: 12px !important;">
                     <label for="floatingInput">Nombre de usuario</label>
                 </div>
                 <?=showError('username')?>
 
-                <div class="form-floating mt-1">
-                    <input type="password" name="password" class="form-control rounded-0" id="floatingPassword" placeholder="Contraseña">
+                <div class="form-floating mt-3">
+                    <input type="password" name="password" class="form-control rounded-0" id="floatingPassword" placeholder="Contraseña" style="border-radius: 12px !important;">
                     <label for="floatingPassword">Contraseña</label>
                 </div>
                 <?=showError('password')?>
